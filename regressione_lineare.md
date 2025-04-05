@@ -101,52 +101,58 @@ Elastic Net $$L_{\text{ElasticNet}} = \text{MSE} + \lambda_1 \sum_{j=1}^{p} |\be
 
 Combina regolarizzazione L1 e L2
 Utile per dataset con variabili altamente correlate
-4.4 Scelta della Funzione di Costo
+
+### 4.4 Scelta della Funzione di Costo
+
 La scelta dipende da vari fattori:
 
-Tipo di dati: La distribuzione e le caratteristiche dei dati
-Sensibilità agli outlier: Alcune metriche sono più robuste di altre
-Interpretabilità: Metriche come RMSE sono più facili da interpretare
-Obiettivo specifico: Per esempio, la necessità di modellare quantili o percentuali
-Dominio applicativo: Diverse aree possono avere convenzioni o requisiti specifici
-5. Derivate e Discesa del Gradiente
-5.1 Derivate: Un'Intuizione Geometrica
+- Tipo di dati: La distribuzione e le caratteristiche dei dati
+- Sensibilità agli outlier: Alcune metriche sono più robuste di altre
+- Interpretabilità: Metriche come RMSE sono più facili da interpretare
+- Obiettivo specifico: Per esempio, la necessità di modellare quantili o percentuali
+- Dominio applicativo: Diverse aree possono avere convenzioni o requisiti specifici
+
+## 5. Derivate e Discesa del Gradiente
+
+### 5.1 Derivate: Un'Intuizione Geometrica
+
 La derivata di una funzione in un punto rappresenta la pendenza della tangente alla curva in quel punto. È un concetto fondamentale che ci permette di comprendere come una funzione varia localmente.
 
-Interpretazione geometrica:
-Derivata positiva: La funzione cresce (pendenza verso l'alto)
-Derivata negativa: La funzione decresce (pendenza verso il basso)
-Derivata zero: Punto stazionario (massimo, minimo o punto di flesso)
-<img alt="Interpretazione geometrica della derivata" src="https://i.imgur.com/xgJnPR1.png">
-Significato del valore della derivata:
-Il valore numerico della derivata in un punto rappresenta:
+- Interpretazione geometrica:
+  - Derivata positiva: La funzione cresce (pendenza verso l'alto)
+  - Derivata negativa: La funzione decresce (pendenza verso il basso)
+  - Derivata zero: Punto stazionario (massimo, minimo o punto di flesso)
+- Significato del valore della derivata:
+  - Il valore numerico della derivata in un punto rappresenta:
+- Inclinazione della tangente: Maggiore è il valore assoluto, più ripida è la curva
+- Velocità di variazione: Quanto rapidamente la funzione cambia in quel punto
+- Direzione di variazione: Positiva (crescente) o negativa (decrescente)
 
-Inclinazione della tangente: Maggiore è il valore assoluto, più ripida è la curva
-Velocità di variazione: Quanto rapidamente la funzione cambia in quel punto
-Direzione di variazione: Positiva (crescente) o negativa (decrescente)
 Per esempio, una derivata di valore 2 indica che la funzione cresce di 2 unità sull'asse y per ogni incremento di 1 unità sull'asse x.
 
-Approssimazione lineare tramite derivata:
+#### Approssimazione lineare tramite derivata:
+
 La derivata ci permette di approssimare localmente la funzione con una retta tangente:
 
 $$f(x+h) \approx f(x) + f'(x) \cdot h$$
 
 Questa approssimazione migliora man mano che $h$ diventa più piccolo, ed è alla base del metodo della discesa del gradiente.
 
-Definizione matematica:
+#### Definizione matematica
+
 La derivata di una funzione $f(x)$ nel punto $x$ è definita come:
 
 $$f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$$
 
-Interpretazione nella regressione lineare:
+#### Interpretazione nella regressione lineare
+
 Nella regressione lineare, la derivata della funzione di costo rispetto a un parametro indica:
 
-Direzione di variazione: Come cambierebbe il costo incrementando o decrementando leggermente il parametro
+- Direzione di variazione: Come cambierebbe il costo incrementando o decrementando leggermente il parametro
 Sensibilità dell'errore: Quali parametri hanno maggiore impatto sull'errore complessivo
-Direzione di aggiornamento: Come modificare i parametri per ridurre l'errore
-Quando la derivata è zero, abbiamo raggiunto un punto stazionario. Nel caso della funzione di costo della regressione lineare (una funzione convessa), questo punto rappresenta l'unico minimo globale, cioè i parametri ottimali che minimizzano l'errore.
+- Direzione di aggiornamento: Come modificare i parametri per ridurre l'errore
+- Quando la derivata è zero, abbiamo raggiunto un punto stazionario. Nel caso della funzione di costo della regressione lineare (una funzione convessa), questo punto rappresenta l'unico minimo globale, cioè i parametri ottimali che minimizzano l'errore.
 
-<img alt="Derivata come pendenza" src="https://i.imgur.com/QkXMbjZ.png">
 Le derivate possono essere visualizzate anche come la pendenza di una superficie nello spazio 3D, dove più la superficie è inclinata, maggiore è il valore della derivata in quella direzione.
 
 5.2 Derivate Parziali
